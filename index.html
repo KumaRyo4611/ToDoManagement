@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="./base.css">
+        <title>部内開発</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <h1>
+                    タスク管理
+                    <button type="button" onclick="add()">タスク追加</button>
+                </h1>
+            </nav>
+        </header>
+
+        <div class="app">
+            <h2>タスク管理</h2>
+            <table class=app-table>
+                <tr class="table-column">
+                    <th>タスク</th>
+                    <th>期限</th>
+                    <th>詳細</th>
+                    <th>カテゴリ</th>
+                    <th>備考</th>
+                </tr>
+                <tr v-for="todo in sortedTasks" @click="dispdetail( todo )">
+                    <th> {{ todo.tasks }} </th>
+                    <td> {{ todo.limit }} </td>
+                    <td> {{ todo.detail }} </td>
+                    <td> {{ todo.category }} </td>
+                    <td> {{ todo.remarks }} </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="detail" v-bind:class="{ disp : dispflg && !addflg, add : addflg }">
+            <h2>タスク詳細</h2>
+            <h3> {{ todo.id }} </h3>
+            <h3> {{ todo.tasks }} </h3>
+            <h3> {{ todo.limit }} </h3>
+            <h3> {{ todo.detail }} </h3>
+            <h3> {{ todo.remarks }} </h3>
+            <button type="button" @click="remove()">削除</button>
+            <button type="button" v-on:click="dispflg = false; addflg = false">しまう</button>
+        </div>
+
+        <footer>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="./src/main.js"></script>
+    </body>
+</html>
