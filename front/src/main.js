@@ -4,7 +4,7 @@ window.onload = function() {
     var request = new XMLHttpRequest();
 
     // URLを開く
-    request.open('GET', "http://127.0.0.1:5042/getAll", true);
+    request.open('GET', "http://localhost:5042/getAll", true);
     request.responseType = 'json'
 
     // レスポンスが返ってきた時の処理を記述 
@@ -85,7 +85,7 @@ var detailvm = new Vue({
             var request = new XMLHttpRequest();
 
             // URLを開く
-            var delURL = "http://127.0.0.1:5042/deleteData/" + this.todo.id;
+            var delURL = "http://localhost:5042/deleteData/" + this.todo.id;
             request.open('GET', delURL, true);
             request.responseType = 'json'
 
